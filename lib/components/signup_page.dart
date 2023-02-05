@@ -97,6 +97,32 @@ class _SignupPageState extends State<SignupPage> {
                         height: 16,
                       ),
                       CustomInputField(
+                          labelText: 'Prenom',
+                          hintText: 'votre nom',
+                          isDense: true,
+                          validator: (textValue) {
+                            if (textValue == null || textValue.isEmpty) {
+                              return 'Le champ Nom est obligatoire !';
+                            }
+                            return null;
+                          }),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      CustomInputField(
+                          labelText: 'Nom',
+                          hintText: 'votre nom',
+                          isDense: true,
+                          validator: (textValue) {
+                            if (textValue == null || textValue.isEmpty) {
+                              return 'Le champ Nom est obligatoire !';
+                            }
+                            return null;
+                          }),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      CustomInputField(
                           labelText: 'Nom',
                           hintText: 'votre nom',
                           isDense: true,

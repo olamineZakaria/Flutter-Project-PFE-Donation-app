@@ -6,6 +6,9 @@ import 'package:login_signup/components/common/page_headerV2.dart';
 import 'package:login_signup/components/common/page_heading.dart';
 import 'package:login_signup/components/login_page.dart';
 import 'package:login_signup/components/common/custom_input_field.dart';
+//import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class ForgetPasswordPage extends StatefulWidget {
   const ForgetPasswordPage({Key? key}) : super(key: key);
@@ -16,7 +19,8 @@ class ForgetPasswordPage extends StatefulWidget {
 
 class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   final _forgetPasswordFormKey = GlobalKey<FormState>();
-
+  // final _auth = FirebaseAuth.instance;
+  late String email;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -46,6 +50,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                             hintText: 'Votre email ',
                             isDense: true,
                             validator: (textValue) {
+                              email = textValue!;
                               if (textValue == null || textValue.isEmpty) {
                                 return 'Le champ Email est obligatoire !';
                               }
@@ -109,13 +114,14 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
     );
   }
 
-  void _handleForgetPassword() {
-    // forget password
+  void _handleForgetPassword() async {
+    // forget passworda
     if (_forgetPasswordFormKey.currentState!.validate()) {
+      // await _auth.sendPasswordResetEmail(email: email.trim());
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
             content: Text(
-          'Envoi de données ...',
+          'Consulter ta boite email',
           style: TextStyle(color: Colors.green),
         )),
       );

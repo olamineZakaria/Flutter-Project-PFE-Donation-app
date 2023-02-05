@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:login_signup/Welcom.dart';
 import 'package:login_signup/components/common/custom_input_field.dart';
 import 'package:login_signup/components/common/page_header.dart';
 import 'package:login_signup/components/forget_password_page.dart';
 import 'package:login_signup/components/signup_page.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:login_signup/components/common/page_heading.dart';
-
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:login_signup/components/common/custom_form_button.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+//import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -17,11 +20,16 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   //
-  final _loginFormKey = GlobalKey<FormState>();
-
+  // final GoogleSignIn _googleSignIn = GoogleSignIn();
+  // final _loginFormKey = GlobalKey<FormState>();
+  // final _auth = FirebaseAuth.instance;
+  // late String email;
+  // late String password;
+//  bool showspinner = false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    // add MOdal progress HUd fpr spinner
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color.fromARGB(255, 255, 255, 255),
@@ -39,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 child: SingleChildScrollView(
                   child: Form(
-                    key: _loginFormKey,
+                    //      key: _loginFormKey,
                     child: Column(
                       children: [
                         const PageHeading(
@@ -49,6 +57,7 @@ class _LoginPageState extends State<LoginPage> {
                             labelText: 'Email',
                             hintText: 'Nom d' 'utilisateur,Email',
                             validator: (textValue) {
+                              //  email = textValue!;
                               if (textValue == null || textValue.isEmpty) {
                                 return 'Email est requis !';
                               }
@@ -66,6 +75,7 @@ class _LoginPageState extends State<LoginPage> {
                           obscureText: true,
                           suffixIcon: true,
                           validator: (textValue) {
+                            //   password = textValue!;
                             if (textValue == null || textValue.isEmpty) {
                               return 'Mot de passe requis!';
                             }
@@ -155,7 +165,9 @@ class _LoginPageState extends State<LoginPage> {
                           height: 50,
                         ),
                         GestureDetector(
-                          onTap: () => {},
+                          onTap: () {
+                            // signup;
+                          },
                           child: const Text(
                             ' à propos de nous',
                             style: TextStyle(
@@ -176,16 +188,22 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void _handleLoginUser() {
-    // login user
-    if (_loginFormKey.currentState!.validate()) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text(
-          'Envoi de données ...',
-          style: TextStyle(color: Colors.green),
-        )),
-      );
-    }
+  void _handleLoginUser() async {
+    // if (_loginFormKey.currentState!.validate()) {
+    //   setState(() {
+    //     showspinner = true;
+    //   });
+    //   try {
+    //     final user = await _auth.signInWithEmailAndPassword(
+    //         email: email, password: password);
+    //     if (user != null) {
+    //       Navigator.push(context,
+    //           MaterialPageRoute(builder: (context) => const SignupPage()));
+    //       setState(() {
+    //         showspinner = false;
+    //       });
+    //     }
+    //   } catch (e) {}
+    // }
   }
 }

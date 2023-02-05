@@ -38,6 +38,11 @@ dependencies:
   email_validator: ^2.0.1
   image_picker: ^0.8.5+3
   carousel_slider: ^4.2.1
+  # firebase_core: ^2.4.1
+  # google_sign_in: ^4.4.4
+  # firebase_auth: ^4.2.5
+  modal_progress_hud_nsn: ^0.3.0
+  # firebase_app_check: ^0.1.1+8
 
 
 dev_dependencies:
@@ -66,6 +71,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/donation.jpeg
+    - assets/images/p1.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
