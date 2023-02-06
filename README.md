@@ -57,12 +57,13 @@ What things you need to run the app
 ```
 ## Built With
 
-- [Android Studio](https://developer.android.com/studio/install) - How to install Android Studio
+- [vs code](https://code.visualstudio.com) - How to install vs code
 - [Flutter](https://flutter.io) - Flutter Official website
 
 ## Author 😊
 
 **zakaria olamine**
+**Hamza Gairi**
 
 - [**Linkedin**](https://ma.linkedin.com/in/zakaria-olamine/)
 
