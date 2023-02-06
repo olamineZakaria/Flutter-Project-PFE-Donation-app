@@ -63,7 +63,6 @@ What things you need to run the app
 ## Author 😊
 
 **zakaria olamine**
-**Hamza Gairi**
 
 - [**Linkedin**](https://ma.linkedin.com/in/zakaria-olamine/)
 
