@@ -21,7 +21,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   //
   // final GoogleSignIn _googleSignIn = GoogleSignIn();
-  // final _loginFormKey = GlobalKey<FormState>();
+  final _loginFormKey = GlobalKey<FormState>();
   // final _auth = FirebaseAuth.instance;
   // late String email;
   // late String password;
@@ -189,6 +189,15 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _handleLoginUser() async {
+    if (_loginFormKey.currentState!.validate()) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text(
+          'Envoi de données ...',
+          style: TextStyle(color: Colors.green),
+        )),
+      );
+    }
     // if (_loginFormKey.currentState!.validate()) {
     //   setState(() {
     //     showspinner = true;

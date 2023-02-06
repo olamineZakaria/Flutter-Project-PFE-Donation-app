@@ -45,6 +45,9 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                         const PageHeading(
                           title: 'Mot de passe oublié',
                         ),
+                        SizedBox(
+                          height: 20,
+                        ),
                         CustomInputField(
                             labelText: 'Email',
                             hintText: 'Votre email ',
@@ -75,7 +78,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                                     borderRadius: BorderRadius.circular(15))),
                           ),
                           child: Text(
-                            "Envoyer un code",
+                            "Envoyer",
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
@@ -93,7 +96,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                                       builder: (context) => const LoginPage()))
                             },
                             child: const Text(
-                              'Back to login',
+                              'Se connecter',
                               style: TextStyle(
                                 fontSize: 13,
                                 color: Color(0xff939393),

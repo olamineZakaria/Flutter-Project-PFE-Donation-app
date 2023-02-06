@@ -84,7 +84,7 @@ class _WelcomeState extends State<Welcome> {
                   title: Strings.stepTwoTitle,
                   content: Strings.stepTwoContent),
               makePage(
-                  image: 'assets/images/help.png',
+                  image: 'assets/images/epm.png',
                   title: Strings.stepThreeTitle,
                   content: Strings.stepThreeContent),
             ],
