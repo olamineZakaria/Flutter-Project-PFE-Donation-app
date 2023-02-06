@@ -18,7 +18,7 @@ class Welcome extends StatefulWidget {
 
 class _WelcomeState extends State<Welcome> {
   late PageController _pageController;
-
+  late String textlabel1 = 'Suivant';
   @override
   void initState() {
     _pageController = PageController(initialPage: 0);
@@ -33,38 +33,40 @@ class _WelcomeState extends State<Welcome> {
 
   @override
   Widget build(BuildContext context) {
-    Timer(
-        Duration(seconds: 300),
-        () => Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (BuildContext context) => LoginPage())));
+    // Timer(
+    //     const Duration(seconds: 60),
+    //     () => Navigator.of(context).pushReplacement(
+    //         MaterialPageRoute(builder: (BuildContext context) => LoginPage())));
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
+        // ignore: prefer_const_literals_to_create_immutables
         actions: <Widget>[
-          Container(
-            padding: EdgeInsets.only(right: 20, top: 0),
-            child: GestureDetector(
-              child: IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginPage()));
-                  },
-                  icon: const Icon(
-                    Icons.keyboard_arrow_right,
-                    color: Colors.grey,
-                  )),
-            ),
-          ),
+          // Container(
+          //   padding: EdgeInsets.only(right: 20, top: 0),
+          //   child: GestureDetector(
+          //     child: IconButton(
+          //         onPressed: () {
+          //           Navigator.push(
+          //               context,
+          //               MaterialPageRoute(
+          //                   builder: (context) => const LoginPage()));
+          //         },
+          //         icon: const Icon(
+          //           Icons.keyboard_arrow_right,
+          //           color: Colors.grey,
+          //         )),
+          //   ),
+          // ),
         ],
       ),
       body: Stack(
-        alignment: Alignment.bottomCenter,
+        alignment: Alignment.bottomRight,
         children: <Widget>[
           PageView(
+            physics: NeverScrollableScrollPhysics(),
             onPageChanged: (int page) {
               setState(() {
                 currentIndex = page;
@@ -88,12 +90,48 @@ class _WelcomeState extends State<Welcome> {
             ],
           ),
           Container(
-            margin: EdgeInsets.only(bottom: 60),
+            margin: EdgeInsets.only(bottom: 80),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: _buildIndicator(),
             ),
-          )
+          ),
+          Container(
+            padding: EdgeInsets.fromLTRB(0, 0, 10, 10),
+            child: ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  _pageController.nextPage(
+                      duration: Duration(milliseconds: 1000),
+                      curve: Curves.easeIn);
+                  currentIndex = currentIndex + 1;
+                  if (currentIndex == 2) {
+                    textlabel1 = 'Commencer';
+                  }
+                  if (currentIndex == 3) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginPage()));
+                  }
+                  print(currentIndex);
+                });
+                //  currentIndex = 0;
+              },
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all(Color.fromRGBO(241, 108, 108, 1)),
+                padding: MaterialStateProperty.all(
+                    EdgeInsets.symmetric(horizontal: 30, vertical: 15)),
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15))),
+              ),
+              child: Text(
+                textlabel1,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
         ],
       ),
     );
